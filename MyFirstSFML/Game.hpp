@@ -16,6 +16,8 @@
 #include <SFML/Network.hpp>
 #include <iostream>
 #include <stdio.h>
+#include <vector>
+#include <ctime>
 
 class Game {
     
@@ -27,7 +29,17 @@ private:
     sf::VideoMode vidMode;
     sf::Event ev;
     
+    // Mouse positions
+    sf::Vector2i mousePosWindow;
+    
+    // Game logic
+    int points;
+    float enemySpawnTimer;
+    float enemySpawnTimerMax;
+    int maxEnemies;
+    
     // Game objects
+    std::vector<sf::RectangleShape> enemies;
     sf::RectangleShape enemy;
     
     
@@ -49,6 +61,10 @@ public:
     void update();
     void render();
     void pollEvents();
+    void updateMousePositions();
+    void spawnEnemy();
+    void updateEnemies();
+    void renderEnemies();
     
     // getters
     
